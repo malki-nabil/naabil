@@ -2,15 +2,22 @@
 
 import Analytics from '@vercel/analytics/astro'
 import SpeedInsights from "@vercel/speed-insights/astro"
+import '../styles/global.css';
 
 export interface Props {
   title: string;
   description: string;
+  bodyClass?: 'site-home' | 'site-page';
+  ogType?: 'website' | 'article';
+  structuredData?: Record<string, unknown>;
 }
 
 const {
   title,
   description,
+  bodyClass = 'site-page',
+  ogType = 'website',
+  structuredData,
 } = Astro.props;
 
 const site = 'https://naabil.com';
@@ -36,7 +43,7 @@ const ogImage = new URL('/og-image.svg', Astro.url.origin).toString();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Naabil" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -64,8 +71,13 @@ const ogImage = new URL('/og-image.svg', Astro.url.origin).toString();
         'https://ko-fi.com/naabil',
       ],
     })} />
+    {
+      structuredData && (
+        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+      )
+    }
   </head>
-  <body>
+  <body class={bodyClass}>
     <Analytics />
     <SpeedInsights />
     <slot />

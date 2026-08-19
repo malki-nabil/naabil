@@ -9,6 +9,7 @@ Naabil is a backend developer working primarily with TypeScript, Node.js, Go and
 ## Links
 
 - Website: https://naabil.com
+- Blog: https://naabil.com/blog/
 - HonoForge (current project): https://codeberg.org/Naabil/HonoForge
 - Codeberg: https://codeberg.org/Naabil
 - X / Twitter: https://x.com/NaabilMalki

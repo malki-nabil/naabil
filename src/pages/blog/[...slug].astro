@@ -1,0 +1,184 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const description = post.data.description;
+const title = `${post.data.title} — Naabil`;
+const ogType = 'article';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description,
+  datePublished: post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+  author: {
+    '@type': 'Person',
+    name: 'Naabil',
+    url: 'https://naabil.com',
+  },
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, Astro.url.origin).toString(),
+  ...(post.data.tags && { keywords: post.data.tags.join(', ') }),
+};
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  bodyClass="site-page"
+  ogType={ogType}
+  structuredData={structuredData}
+>
+  <main>
+    <p class="eyebrow">blog</p>
+    <h1>{post.data.title}</h1>
+    <p class="post-meta">
+      {formatDate(post.data.pubDate)}
+      {
+        post.data.updatedDate &&
+          <> · Updated {formatDate(post.data.updatedDate)}</>
+      }
+    </p>
+
+    <hr>
+
+    <article class="prose">
+      <Content />
+    </article>
+
+    <nav aria-label="Post navigation">
+      <a href="/blog/">Back to blog</a>
+      <a href="/">Home</a>
+    </nav>
+  </main>
+</BaseLayout>
+
+<style>
+  .post-meta {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: -4px 0 0;
+  }
+
+  .prose {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .prose h2 {
+    font-size: 1.4rem;
+    margin: 32px 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .prose h3 {
+    font-size: 1.15rem;
+    margin: 26px 0 10px;
+  }
+
+  .prose p {
+    margin: 0 0 18px;
+  }
+
+  .prose a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid var(--red);
+  }
+
+  .prose a:hover {
+    color: var(--red);
+  }
+
+  .prose code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.85em;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+
+  .prose pre {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 16px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  .prose blockquote {
+    margin: 0 0 18px;
+    padding: 0 0 0 18px;
+    border-left: 3px solid var(--red);
+    color: var(--muted);
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 22px;
+    margin: 0 0 18px;
+  }
+
+  .prose li {
+    margin: 6px 0;
+  }
+
+  .prose hr {
+    border-top-color: var(--line);
+  }
+
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 18px;
+    font-size: 0.95rem;
+  }
+
+  .prose th,
+  .prose td {
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    text-align: left;
+  }
+
+  .prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+</style>
