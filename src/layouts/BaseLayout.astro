@@ -1,0 +1,67 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const {
+  title,
+  description,
+} = Astro.props;
+
+const site = 'https://naabil.com';
+const canonical = new URL(Astro.url.pathname, Astro.url.origin).toString();
+const ogImage = new URL('/og-image.svg', Astro.url.origin).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Naabil" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="color-scheme" content="light" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Naabil" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Naabil',
+      url: site,
+      jobTitle: 'Backend Developer',
+      knowsAbout: ['TypeScript', 'Node.js', 'Go', 'Hono', 'Backend Engineering', 'Infrastructure'],
+      sameAs: [
+        'https://codeberg.org/Naabil',
+        'https://x.com/NaabilMalki',
+        'https://ko-fi.com/naabil',
+      ],
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

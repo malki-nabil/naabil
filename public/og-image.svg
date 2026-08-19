@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f1ea"/>
+  <text x="120" y="280" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="40" fill="#b3261e">&gt; whoami</text>
+  <text x="120" y="390" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="120" font-weight="700" fill="#161412">Naabil</text>
+  <text x="120" y="470" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="36" fill="#726c62">Backend developer building systems, APIs &amp; infrastructure.</text>
+  <text x="120" y="530" font-family="monospace" font-size="28" fill="#161412">TypeScript · Node.js · Go · Hono</text>
+</svg>

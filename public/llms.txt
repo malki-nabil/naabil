@@ -1,0 +1,19 @@
+# Naabil
+
+> Backend developer building systems, APIs & infrastructure.
+
+## About
+
+Naabil is a backend developer working primarily with TypeScript, Node.js, Go and Hono. He builds backend tooling, APIs and infrastructure.
+
+## Links
+
+- Website: https://naabil.com
+- HonoForge (current project): https://codeberg.org/Naabil/HonoForge
+- Codeberg: https://codeberg.org/Naabil
+- X / Twitter: https://x.com/NaabilMalki
+- Ko-fi: https://ko-fi.com/naabil
+
+## Tech stack
+
+TypeScript, Node.js, Go, Hono
