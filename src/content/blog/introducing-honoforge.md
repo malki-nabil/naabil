@@ -9,7 +9,7 @@ I've been building backend systems with TypeScript and NodeJs for a while, and I
 coming back to [Hono](https://hono.dev) for its speed, minimal surface area and great
 TypeScript support.
 
-The main i faced was re-doing all the same boilerplate setup everytime i started a new project,
+The main issue i faced was re-doing all the same boilerplate setup everytime i started a new project,
 HonoForge is my attempt to speed things up for myself.
 
 by simply running **`npx create-hono-forge@latest my-app`** i can be up and running in seconds,
