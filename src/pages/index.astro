@@ -1,8 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Naabil — Backend Developer';
 const description = 'Naabil is a backend developer building systems, APIs & infrastructure with TypeScript, Node.js, Go and Hono. Currently building HonoForge.';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latest = posts[0];
 ---
 
 <BaseLayout title={title} description={description} bodyClass="site-home">
@@ -19,6 +25,20 @@ const description = 'Naabil is a backend developer building systems, APIs & infr
       <a href="https://honoforge.naabil.com" target="_blank" rel="noopener">HonoForge →</a>
       <p>A Hono-based project exploring backend tooling and infrastructure patterns. Open source, in active development.</p>
     </div>
+
+    {
+      latest && (
+        <>
+          <hr>
+
+          <p class="focus-label">Latest post</p>
+          <div class="focus">
+            <a href={`/blog/${latest.id}/`}>{latest.data.title} →</a>
+            <p>{latest.data.description}</p>
+          </div>
+        </>
+      )
+    }
 
     <nav aria-label="Site links">
       <a href="/blog/">Blog</a>
