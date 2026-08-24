@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Naabil — Backend Developer';
-const description = 'Naabil is a backend developer building systems, APIs & infrastructure with TypeScript, Node.js, Go and Hono. Currently building HonoForge.';
+const title = 'Nabil Malki (Naabil) — Backend Developer';
+const description = 'Nabil Malki (online as Naabil) is a backend developer building systems, APIs & infrastructure with TypeScript, Node.js, Go and Hono. Currently building HonoForge.';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
