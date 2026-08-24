@@ -24,7 +24,9 @@ export default function middleware(request: Request): Response | undefined {
   // Compare the full segment (not startsWith('/ar') alone, or '/article' would
   // falsely count as the target).
 
-  if(request.url === "/fuck-off" && location !== "IL") {
+  const url = new URL(request.url);
+
+  if(url.pathname === "/fuck-off" && location !== "IL") {
 	return Response.redirect(new URL("/", request.url), 307)
   }
 
