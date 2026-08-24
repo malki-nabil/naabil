@@ -24,6 +24,10 @@ export default function middleware(request: Request): Response | undefined {
   // Compare the full segment (not startsWith('/ar') alone, or '/article' would
   // falsely count as the target).
 
+  if(request.url === "/fuck-off" && location !== "IL") {
+	return Response.redirect(new URL("/", request.url), 307)
+  }
+
   // 307 = temporary redirect, preserves the method and tells crawlers this isn't permanent.
   if(location === "IL") {
       return Response.redirect(new URL("/fuck-off", request.url), 307);
