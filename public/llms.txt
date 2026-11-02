@@ -4,14 +4,14 @@
 
 ## About
 
-Naabil is a backend developer working primarily with TypeScript, Node.js, Go and Hono. He builds backend tooling, APIs and infrastructure.
+Naabil is a backend developer working primarily with TypeScript, Node.js, Go and Hono. He builds backend tooling, APIs and infrastructure. He is currently working at dynamick.dev
 
 ## Links
 
 - Website: https://naabil.com
 - Blog: https://naabil.com/blog/
-- HonoForge (current project): https://honoforge.naabil.com
-- Codeberg: https://codeberg.org/Naabil
+- Dynamick (current work): https://www.dynamick.dev
+- Github : https://github.com/malki-nabil
 - X / Twitter: https://x.com/NaabilMalki
 - Ko-fi: https://ko-fi.com/naabil
 

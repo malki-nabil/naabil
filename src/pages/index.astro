@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Nabil Malki (Naabil) — Backend Developer';
-const description = 'Nabil Malki (online as Naabil) is a backend developer building systems, APIs & infrastructure with TypeScript, Node.js, Go and Hono. Currently building HonoForge.';
+const description = 'Nabil Malki (online as Naabil) is a backend developer building systems, APIs & infrastructure with TypeScript, Node.js, Go and Hono. Currently Working at Dynamick.dev.';
 
 const posts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -20,10 +20,10 @@ const latest = posts[0];
 
     <hr>
 
-    <p class="focus-label">Currently building</p>
+    <p class="focus-label">Currently working at</p>
     <div class="focus">
-      <a href="https://honoforge.naabil.com" target="_blank" rel="noopener">HonoForge →</a>
-      <p>A Hono-based project exploring backend tooling and infrastructure patterns. Open source, in active development.</p>
+      <a href="https://www.dynamick.dev" target="_blank" rel="noopener">Dynamick →</a>
+      <p>Transforming Ideas into Digital Excellence</p>
     </div>
 
     {
@@ -43,7 +43,8 @@ const latest = posts[0];
     <nav aria-label="Site links">
       <a href="/blog/">Blog</a>
       <a href="mailto:info@naabil.com">Email</a>
-      <a href="https://codeberg.org/Naabil" target="_blank" rel="noopener">Codeberg</a>
+      <a href="https://www.dynamick.dev" target="_blank" rel="noopener">Dynamick</a>
+      <a href="https://github.com/malki-nabil" target="_blank" rel="noopener">Github</a>
       <a href="https://x.com/NaabilMalki" target="_blank" rel="noopener">X / Twitter</a>
       <a href="https://ko-fi.com/naabil" target="_blank" rel="noopener">Ko-fi</a>
     </nav>

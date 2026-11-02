@@ -33,7 +33,7 @@ const ogImage = new URL('/og-image.jpg', Astro.url.origin).toString();
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Nabil Malki, Naabil, Naabil Malki, backend developer, backend engineer, software engineer, TypeScript, Node.js, Go, Hono, API development, infrastructure" />
+    <meta name="keywords" content="Nabil Malki, Naabil, Naabil Malki, backend developer, backend engineer, software engineer, TypeScript, Node.js, Go, Hono, API development, infrastructure, Dynamick" />
     <meta name="author" content="Nabil Malki (Naabil)" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
@@ -59,24 +59,25 @@ const ogImage = new URL('/og-image.jpg', Astro.url.origin).toString();
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Nabil Malki',
-      alternateName: 'Naabil',
-      url: site,
-      jobTitle: 'Backend Developer',
-      knowsAbout: ['TypeScript', 'Node.js', 'Go', 'Hono', 'Backend Engineering', 'Infrastructure'],
-      sameAs: [
-        'https://codeberg.org/Naabil',
-        'https://x.com/NaabilMalki',
-        'https://ko-fi.com/naabil',
-      ],
-    })} />
+<script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Nabil Malki',
+	alternateName: 'Naabil',
+	url: site,
+	jobTitle: 'Backend Developer',
+	knowsAbout: ['TypeScript', 'Node.js', 'Go', 'Hono', 'Backend Engineering', 'Infrastructure'],
+	sameAs: [
+	'https://www.dynamick.dev',
+	'https://github.com/malki-nabil',
+	'https://x.com/NaabilMalki',
+	'https://ko-fi.com/naabil',
+	],
+	})} />
     {
       structuredData && (
-        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-      )
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )
     }
   </head>
   <body class={bodyClass}>
